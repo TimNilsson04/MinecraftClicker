@@ -73,7 +73,7 @@ function step(timestamp) {
     // på samma sätt kan du även dölja uppgraderingar som inte kan köpas
     if (moneyPerClick == 10 && !achievementTest) {
         achievementTest = true;
-        message('Du har hittat en FOSSIL!', 'achievement');
+        message('You found a GOD apple!', 'achievement');
     }
 
     window.requestAnimationFrame(step);
@@ -107,18 +107,18 @@ window.addEventListener('load', (event) => {
  */
 upgrades = [
     {
-        name: 'Fin sop',
-        cost: 10,
+        name: 'Coal',
+        cost: 16,
         amount: 1,
     },
     {
-        name: 'Spade',
-        cost: 100,
+        name: 'Lapiz',
+        cost: 128,
         amount: 10,
     },
     {
-        name: 'Hjälpreda',
-        cost: 1000,
+        name: 'Emeralds',
+        cost:  1024,
         amount: 100,
     },
 ];
@@ -149,18 +149,18 @@ function createCard(upgrade) {
     const cost = document.createElement('p');
 
     header.textContent = `${upgrade.name}, +${upgrade.amount} per sekund.`;
-    cost.textContent = `Köp för ${upgrade.cost} benbitar.`;
+    cost.textContent = `Köp för ${upgrade.cost} Diamonds.`;
 
     card.addEventListener('click', (e) => {
         if (money >= upgrade.cost) {
             moneyPerClick++;
             money -= upgrade.cost;
             upgrade.cost *= 1.5;
-            cost.textContent = 'Köp för ' + upgrade.cost + ' benbitar';
+            cost.textContent = 'Köp för ' + upgrade.cost + ' Diamonds';
             moneyPerSecond += upgrade.amount;
-            message('Grattis du har lockat till dig fler besökare!', 'success');
+            message('Success! You got more pickaxes!', 'success');
         } else {
-            message('Du har inte råd.', 'warning');
+            message(`You don't have enough diamonds.`, 'warning');
         }
     });
 

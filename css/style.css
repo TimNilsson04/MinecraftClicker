@@ -57,6 +57,8 @@ input,
 button,
 textarea,
 select {
+    color: #0ee7f7;
+    background-image: url(../img/e9904cdb30314092a60f1ec18711bbbf.jpg);
     font: inherit;
 }
 
@@ -89,9 +91,10 @@ select {
 body {
     display: flex;
     flex-direction: column;
-    background-color: #f8f8f8;
-    color: #121212;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: #000000;
+    color: #0ee7f7;
+    font-family: 'Minecraft Regular', Arial, sans-serif;
+    letter-spacing: .1rem;
 }
 /* För att göra footern sticky så har vi flex på bodyn och då räcker det med 
  * margin-top auto här.
@@ -193,16 +196,19 @@ footer {
  * meddelanden. Javascript används för att lägga till stilen på meddelandet
  */
 .warning {
-    background-color: palevioletred;
+    background-image: url(../img/unnamed1.png);
+    color: black;
+
 }
 
 .success {
-    background-color: mediumspringgreen;
+    color: black;
+    background-image: url(../img/unnamed.png);
 }
 
 .achievement {
-    color: #121212;
-    background-color: rebeccapurple;
+    color: black;
+    background-image: url(../img/12875720-newpiskel_l.webp);
 }
 
 /* dessa kort används för spelets uppgraderingar 
@@ -216,6 +222,7 @@ footer {
     border: 1px solid #646464;
     margin: 0.5rem 0;
     padding: 1rem 0.5rem;
+    background-image: url(../img/e9904cdb30314092a60f1ec18711bbbf.jpg);
 }
 
 .card:hover {
