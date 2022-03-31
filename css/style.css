@@ -234,3 +234,9 @@ footer {
 .title {
     font-weight: 600;
 }
+#sound {
+    display: none;
+}
+#eating{
+    display: none;
+}

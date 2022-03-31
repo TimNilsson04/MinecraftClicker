@@ -6,10 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title>Clicker exempel</title>
+    <title>Clicker</title>
 </head>
 
+
 <body class="p1" background="img/2984631.webp">
+    <audio controls id="sound">
+        <source src="ItemS.mp3" type="audio/mpeg">
+    </audio>
+    <audio controls id="eating">
+        <source src="Eating.mp3" type="audio/mpeg">
+    </audio>
     <main class="container">
         <header>
             <div class="img-container">
@@ -27,14 +34,17 @@
                         <h1>Diamonds: <span id="money"></span></h1>
                     </li>
                     <li class="item">
-                        <h1>Iron pickaxe: <span id="mps"></span></h1>
+                        <h1>Diamonds per ore: <span id="mpc"></span></h1>
                     </li>
                     <li class="item">
-                        <h1>Diamond pickaxe: <span id="mpc"></span></h1>
+                        <h1>Iron pickaxes: <span id="mps"></span></h1>
+                    </li>
+                    <li class="item">
+                        <h1>Diamond pickaxes: <span id="upgrades"></span></h1>
                     </li>
                 </ul>
                 <div class="game-button">
-                    <button  id="click">Mine</button>
+                    <button  id="click" >Mine</button>
                 </div>
             </div>
             <div class="w-100">
@@ -46,11 +56,14 @@
     </main>
     <div id="msgbox"></div>
     <footer class="container">
-        <p>Hjälp till att fixa fel och lägga till funktioner, 
+        <p>Help fix some problems and apply some functions,
             <a href="https://github.com/jensnti/clicker/issues">issues</a>
-            eller
+            or
             <a href="https://github.com/jensnti/clicker/pulls">pull requests</a>.
         </p>
+        <p>
+            This site is for educational purposes only!! I do not own anything, sounds and textures are made by Mojang/Microsoft and this is not made to make any type of revenue.
+            </p>
     </footer>
     <script src="js/clicker.js"></script>
 </body>

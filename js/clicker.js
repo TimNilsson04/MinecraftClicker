@@ -11,8 +11,11 @@ const clickerButton = document.querySelector('#click');
 const moneyTracker = document.querySelector('#money');
 const mpsTracker = document.querySelector('#mps'); // money per second
 const mpcTracker = document.querySelector('#mpc'); // money per click
+const upgradesTracker = document.querySelector('#upgrades');
 const upgradeList = document.querySelector('#upgradelist');
 const msgbox = document.querySelector('#msgbox');
+const sound = document.querySelector('#sound');
+const eating = document.querySelector('#eating');
 
 /* Följande variabler använder vi för att hålla reda på hur mycket pengar som
  * spelaren, har och tjänar.
@@ -24,7 +27,9 @@ const msgbox = document.querySelector('#msgbox');
 let money = 0;
 let moneyPerClick = 1;
 let moneyPerSecond = 0;
+let acquiredUpgrades = 0;
 let last = 0;
+
 
 let achievementTest = false;
 
@@ -41,6 +46,7 @@ let achievementTest = false;
 clickerButton.addEventListener(
     'click',
     () => {
+        sound.play()
         // vid click öka score med 1
         money += moneyPerClick;
         // console.log(clicker.score);
@@ -61,6 +67,7 @@ function step(timestamp) {
     moneyTracker.textContent = Math.round(money);
     mpsTracker.textContent = moneyPerSecond;
     mpcTracker.textContent = moneyPerClick;
+    upgradesTracker.textContent = acquiredUpgrades;
 
     if (timestamp >= last + 1000) {
         money += moneyPerSecond;
@@ -71,9 +78,13 @@ function step(timestamp) {
     // achievements. Titta dock på upgrades arrayen och gör något rimligare om du
     // vill ha achievements.
     // på samma sätt kan du även dölja uppgraderingar som inte kan köpas
-    if (moneyPerClick == 10 && !achievementTest) {
+    if (acquiredUpgrades == 40 && !achievementTest) {
         achievementTest = true;
         message('You found a GOD apple!', 'achievement');
+    }
+    while (money < 100000) {
+        
+
     }
 
     window.requestAnimationFrame(step);
@@ -92,7 +103,7 @@ function step(timestamp) {
  */
 window.addEventListener('load', (event) => {
     console.log('page is fully loaded');
-    upgrades.forEach((upgrade) => {
+    upgrades.forEach((upgrade) => { 
         upgradeList.appendChild(createCard(upgrade));
     });
     window.requestAnimationFrame(step);
@@ -112,6 +123,11 @@ upgrades = [
         amount: 1,
     },
     {
+        name: 'Player',
+        cost: 64,
+        clicks: 2
+    },
+    {
         name: 'Lapiz',
         cost: 128,
         amount: 10,
@@ -121,6 +137,16 @@ upgrades = [
         cost:  1024,
         amount: 100,
     },
+    {
+        name: 'Netherite',
+        cost:  8192,
+        amount: 1000,
+    },
+    {
+        name: 'Notch',
+        cost:  640000,
+        amount: 64000000,
+},
 ];
 
 /* createCard är en funktion som tar ett upgrade objekt som parameter och skapar
@@ -148,16 +174,22 @@ function createCard(upgrade) {
     header.classList.add('title');
     const cost = document.createElement('p');
 
-    header.textContent = `${upgrade.name}, +${upgrade.amount} per sekund.`;
-    cost.textContent = `Köp för ${upgrade.cost} Diamonds.`;
+    if (upgrade.amount) {
+        header.textContent = `${upgrade.name}, +${upgrade.amount} per sekund.`;
+    } else {
+        header.textContent = `${upgrade.name}, +${upgrade.clicks} per klick.`;
+    }
+    cost.textContent = `Buy for ${upgrade.cost} Diamonds.`;
 
     card.addEventListener('click', (e) => {
         if (money >= upgrade.cost) {
-            moneyPerClick++;
-            money -= upgrade.cost;
+            eating.play()
+            acquiredUpgrades++;
+            money -= upgrade.cost ;
             upgrade.cost *= 1.5;
-            cost.textContent = 'Köp för ' + upgrade.cost + ' Diamonds';
-            moneyPerSecond += upgrade.amount;
+            cost.textContent = 'Buy for ' + Math.round(upgrade.cost) + ' Diamonds';
+            moneyPerSecond += upgrade.amount ? upgrade.amount : 0;
+            moneyPerClick += upgrade.clicks ? upgrade.clicks : 0;
             message('Success! You got more pickaxes!', 'success');
         } else {
             message(`You don't have enough diamonds.`, 'warning');
@@ -185,3 +217,4 @@ function message(text, type) {
         p.parentNode.removeChild(p);
     }, 2000);
 }
+
