@@ -92,23 +92,23 @@ function step(timestamp) {
         achievementTes = true;
         message('You are the pickaxe god!', 'achievement');
     }
-    if(money > 64000 && !achievementTe){
+    if (money > 64000 && !achievementTe){
         achievementTe = true;
         message('You are 90% away from buying notch the god!', 'achievement');
     }
-    if(money > 640000&& !achievementT){
+    if (money > 640000 && !achievementT){
         achievementT = true;
         message('You can now buy notch!', 'achievement');
     }
-    if(money > 64000000&& !achievement){
+    if (money > 64000000 && !achievement){
         achievement = true;
         message('You Are Minecraft!', 'achievement');
     }
-    if(last > 3600000 && !achievemen){
+   /* if (last > 3600000 && !achievemen){
         achievemen = true;
         message('Time god!', 'achievement');
     }
-
+*/
     window.requestAnimationFrame(step);
 }
 
