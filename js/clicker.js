@@ -32,6 +32,12 @@ let last = 0;
 
 
 let achievementTest = false;
+let achievementTes = false;
+let achievementTe = false;
+let achievementT = false;
+let achievement = false;
+let achievemen = false;
+
 
 /* Med ett valt element, som knappen i detta fall så kan vi skapa listeners
  * med addEventListener så kan vi lyssna på ett specifikt event på ett html-element
@@ -82,9 +88,25 @@ function step(timestamp) {
         achievementTest = true;
         message('You found a GOD apple!', 'achievement');
     }
-    while (money < 100000) {
-        
-
+    if (acquiredUpgrades == 250 && !achievementTes) {
+        achievementTes = true;
+        message('You are the pickaxe god!', 'achievement');
+    }
+    if(money > 64000 && !achievementTe){
+        achievementTe = true;
+        message('You are 90% away from buying notch the god!', 'achievement');
+    }
+    if(money > 640000&& !achievementT){
+        achievementT = true;
+        message('You can now buy notch!', 'achievement');
+    }
+    if(money > 64000000&& !achievement){
+        achievement = true;
+        message('You Are Minecraft!', 'achievement');
+    }
+    if(last > 3600000 && !achievemen){
+        achievemen = true;
+        message('Time god!', 'achievement');
     }
 
     window.requestAnimationFrame(step);
@@ -175,9 +197,9 @@ function createCard(upgrade) {
     const cost = document.createElement('p');
 
     if (upgrade.amount) {
-        header.textContent = `${upgrade.name}, +${upgrade.amount} per sekund.`;
+        header.textContent = `${upgrade.name}, +${upgrade.amount} per second.`;
     } else {
-        header.textContent = `${upgrade.name}, +${upgrade.clicks} per klick.`;
+        header.textContent = `${upgrade.name}, +${upgrade.clicks} per click.`;
     }
     cost.textContent = `Buy for ${upgrade.cost} Diamonds.`;
 
