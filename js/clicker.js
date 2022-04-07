@@ -104,11 +104,11 @@ function step(timestamp) {
         achievement = true;
         message('You Are Minecraft!', 'achievement');
     }
-   /* if (last > 3600000 && !achievemen){
+   if (last > 3600000 && !achievemen){
         achievemen = true;
         message('Time god!', 'achievement');
     }
-*/
+    
     window.requestAnimationFrame(step);
 }
 
