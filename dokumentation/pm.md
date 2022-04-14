@@ -2,6 +2,14 @@
 
 Tim Nilsson 2022-04-14
 
+MinecraftClicker
+
+With entusiasm and your pick in hand you set out to swing your pickaxe from side to side. Use your pickaxe to mine all the diamonds. How many diamond picks can you get?
+
+https://github.com/TimNilsson04/MinecraftClicker
+
+https://timnilsson04.github.io/MinecraftClicker/
+
 ## Inledning
 
 Syftet med denna uppgift vad att få lära sig hur javascript fungerar med html och att göra om en clicker mall till något annat tema. Jag gjorde detta med hjälp av en mall Jens skickade ut och gjorde om den till ett Minecraft tema.
